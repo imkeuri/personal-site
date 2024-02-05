@@ -1,9 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [ "./src/**/*.{js,jsx,ts,tsx}", "src\components\navbar\navbar.tsx"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+    },
+    padding: {},
   },
-  plugins: [],
-}
-
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/typography"),
+    "tailwindcss-children",
+    "prettier-plugin-svelte",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss",
+  ],
+};
