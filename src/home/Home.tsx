@@ -1,6 +1,7 @@
 import "./Home.css";
 import profile from "/src/assets/profile.png";
 import BasicText from "../components/navbar/BasicText";
+import Card from "../components/cards/Cards";
 
 function Home() {
   const introduction = {
@@ -39,6 +40,10 @@ function Home() {
 
       <div className="bg-blue-400 py-12">
         <BasicText {...introduction.employees[1]}></BasicText>
+      </div>
+
+      <div>
+        <Card/>
       </div>
     </>
   );
