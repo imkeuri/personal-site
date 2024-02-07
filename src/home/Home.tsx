@@ -2,6 +2,7 @@ import "./Home.css";
 import profile from "/src/assets/profile.png";
 import BasicText from "../components/navbar/BasicText";
 import Card from "../components/cards/Cards";
+import Panel from "../components/panel/panel";
 
 function Home() {
   const introduction = {
@@ -38,13 +39,34 @@ function Home() {
         </div>
       </div>
 
-      <div className="bg-blue-400 py-12">
+      <div className="mx-auto bg-blue-400 py-12 h-80">
         <BasicText {...introduction.employees[1]}></BasicText>
       </div>
 
-      <div>
-        <Card/>
-      </div>
+      <Card />
+      <Panel />
+
+      <section className="bg-[#ffffff] flex font-medium items-center justify-center h-96  ">
+        <div className="mt-8">
+          <h2 className="text-black font-bold text-2xl tracking-wide">
+            Companies I collaborated
+          </h2>
+          <div className="grid grid-flow-col gap-10">
+            <img
+              className="mt-8"
+              src="https://evopoint.do/assets/images/logo-evopoint.svg"
+            />
+            <img
+              className="mt-8"
+              src="https://evopoint.do/assets/images/logo-evopoint.svg"
+            />
+            <img
+              className="mt-8"
+              src="https://evopoint.do/assets/images/logo-evopoint.svg"
+            />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
