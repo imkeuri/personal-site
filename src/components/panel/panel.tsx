@@ -2,7 +2,7 @@ import person from "../../assets/Person.webp";
 
 export default function Panel() {
   return (
-    <section className=" container mx-auto bg-[#20354b] pt-20 p-10 text-white">
+    <section className="container mx-auto bg-[#20354b] pt-20 p-10 text-white">
       <div className="m-auto grid lg:grid-cols-2 sm:grid-cols-1 gap-4">
         {/* Left Column for Title and Image */}
         <div className="">
