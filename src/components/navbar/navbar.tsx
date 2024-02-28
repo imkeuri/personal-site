@@ -40,11 +40,7 @@ const Navbar = () => {
                         Contact
                     </a>
                 </nav>
-                <Button className="bg-[#0e2743]" size="sm" variant="outline">
-                    Contact Me
-                </Button>
-
-                {/*<DialogForm title={"Contact form"} description={"One step futher to contact me."}/>*/}
+                    <DialogForm  title={"Contact form"} description={"One step futher to contact me."} showDialog={showForm}/>
             </div>
         </nav>
     );

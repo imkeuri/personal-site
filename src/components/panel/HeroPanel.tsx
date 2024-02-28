@@ -1,6 +1,16 @@
 import {Button} from "@/components/ui/button.tsx";
+import DialogForm from "@/components/Dialog/DialogForm.tsx";
 
 const HeroPanel = () => {
+
+    const buttonDialogProps = {
+        title: "Connecting with me...",
+        description: "One step futher to connect",
+        style: "bg-[#e3eefb]  inline-block px-5 py-2 text-[#2187d6] uppercase border-[#f1f7fe] font-bold",
+        buttonLabel: "Let's connect",
+        buttonVariant: "secondary",
+        buttonSize: "lg"
+    }
     return (
         <section className="bg-gray-800 relative text-white" data-pg-collapsed>
             <img
@@ -14,6 +24,8 @@ const HeroPanel = () => {
                         <p className="font-light mb-6 text-xl">
                             Let me bring solutions to your problems.
                         </p>
+
+                        <DialogForm {...buttonDialogProps}/>
                         <Button variant="secondary"  size="lg" className="bg-[#e3eefb]  inline-block px-5 py-2 text-[#2187d6] uppercase border-[#f1f7fe] font-bold">
                            Let's Connect
                         </Button>
