@@ -13,7 +13,7 @@ export default function Card () {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-wrap [&>*]:py-4 [&>*]:text-center overflow-auto">
+                    <div className="flex flex-wrap [&>*]:py-5 [&>*]:text-center overflow-auto">
                         <div className="w-full p-4  xl:w-3/12 sm:w-6/12">
                             <div className="py-4">
                                 <span
