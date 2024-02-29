@@ -1,44 +1,42 @@
+import React from "react";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogFooter,
     DialogHeader,
-    DialogTitle,
-    DialogTrigger
+    DialogTitle
 } from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button.tsx";
 import {
     Form,
     FormControl,
     FormField,
     FormItem,
     FormLabel,
-}                          from "@/components/ui/form.tsx";
+} from "@/components/ui/form.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { useToast } from "@/components/ui/use-toast.ts";
 import { Textarea } from "@/components/ui/textarea.tsx";
-
 
 type DialogFormProps = {
     title: string;
     description: string;
     show: boolean;
-}
+    setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
+const DialogForm: React.FunctionComponent<DialogFormProps> = ({
+                                                                  title,
+                                                                  description,
+                                                                  show,
+                                                                  setShowForm,
+                                                              }) => {
+    const { toast } = useToast();
 
-    const { toast } = useToast()
-
-    const [showForm, setHideForm] = useState(true);
-
-
-    // setHideForm(props.show);
     const formSchema = z.object({
         name: z.string().min(6, {
             message: "Username must be at least 5 characters.",
@@ -49,9 +47,9 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
         }),
         email: z.string()
             .min(6)
-            .email({message: "This is no a valid email"}),
+            .email({ message: "This is no a valid email" }),
+    });
 
-    })
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -59,54 +57,31 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
             description: "",
             email: "",
         },
-    })
+    });
 
-    function onSubmit(values: z.infer<typeof formSchema>,event :Event) {
-
-        event.preventDefault();
+    const onSubmit = (values: z.infer<typeof formSchema>) => {
         try {
-            console.log(values)
-
-            // setHideForm(false);
-
-            // props.show = false;
-
+            console.log(values);
             toast({
-                title: "Message send it",
+                title: "Message sent",
                 description: "Friday, February 10, 2023 at 5:57 PM",
-            })
-
-            setHideForm(false)
-        } catch (err){
-            toast({ variant: "destructive" })
+            });
+            setShowForm(false);
+        } catch (err) {
+            toast({ variant: "destructive" });
         }
-
-
-
-
-
-    }
-
-    if (!showForm)
-    {
-
-        return <></>
-    }
-
+    };
 
     return (
         <>
-
-            <Dialog open={showForm} onOpenChange={setHideForm}>
+            <Dialog open={show} onOpenChange={() => setShowForm(!show)}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>{props.title}</DialogTitle>
-                        <DialogDescription>
-                            {props.description}
-                        </DialogDescription>
+                        <DialogTitle>{title}</DialogTitle>
+                        <DialogDescription>{description}</DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
-                        <form onSubmit= {form.handleSubmit(onSubmit)} className="space-y-8">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={form.control}
                                 name="name"
@@ -114,7 +89,7 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
                                     <FormItem>
                                         <FormLabel>Full Name</FormLabel>
                                         <FormControl>
-                                            <Input  placeholder="Name" {...field} />
+                                            <Input placeholder="Name" {...field} />
                                         </FormControl>
                                     </FormItem>
                                 )}
@@ -129,7 +104,6 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
                                         <FormControl>
                                             <Input placeholder="ex: yourAreAmazing@mail.com" {...field} />
                                         </FormControl>
-
                                     </FormItem>
                                 )}
                             />
@@ -142,7 +116,6 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
                                         <FormControl>
                                             <Textarea placeholder="Description" {...field} />
                                         </FormControl>
-
                                     </FormItem>
                                 )}
                             />
@@ -153,10 +126,8 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
                     </Form>
                 </DialogContent>
             </Dialog>
-
         </>
     );
-}
-
+};
 
 export default DialogForm;

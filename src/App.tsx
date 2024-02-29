@@ -1,8 +1,8 @@
 
 import './App.css'
-import Navbar from "@/components/navbar/Navbar.tsx";
-import Home from "@/components/home/Home.tsx";
-import Footer from "@/components/footer/Footer.tsx";
+import Navbar from '/src/components/navbar/navbar.tsx';
+import Home from "/src/components/home/Home.tsx";
+import Footer from "/src/components/footer/Footer.tsx";
 
 function App() {
 

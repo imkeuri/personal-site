@@ -13,11 +13,8 @@ const PanelAboutMe = () =>{
 
                             <h2 className="font-medium mb-2 text-[#12497a] ">A Little</h2>
                             <h3 className="font-bold mb-2 text-5xl text-[#12497a]">About Me</h3>
-                            <p className="mb-6 text-[#0e2743]">Phasellus pulvinar faucibus neque, nec rhoncus nunc
-                                ultrices sit amet.
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus
-                                neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas
-                                est.</p>
+                            <p className="mb-6 text-[#0e2743]">
+                                I'm an experienced software developer proficient in C# and .NET Core, specializing in crafting robust solutions for diverse projects. With a keen focus on software principles, I've honed my skills in developing APIs and Web Applications while ensuring adherence to best practices. My expertise extends to navigating cloud environments, particularly Azure, backed by certifications.</p>
                             <div className="-mx-2 flex flex-wrap mb-6">
                                 <div className="p-2 w-full sm:w-4/12">
                                     <div

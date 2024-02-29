@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button.tsx";
 
 import  { useState } from "react";
-import DialogForm          from "@/components/Dialog/DialogForm.tsx";
+import DialogForm  from "@/components/Dialog/DialogForm.tsx";
 
 const Navbar = () => {
 
-    const [dialogVisibility, setDialogVisibility] = useState(false)
+    const [showForm, setShowForm] = useState(false);
 
+    const handleShowForm = () => {
+        setShowForm(true);
+    };
     return (
         <nav
             className="grid gap-2 border-t border-gray-200 shrink-0 py-4 md:py-6 dark:border-gray-800 text-[#f1f7fe] bg-[#0e2743]">
@@ -40,18 +43,19 @@ const Navbar = () => {
                         Contact
                     </a>
                 </nav>
-                <Button className="bg-[#0e2743]" size="sm" variant="outline" onClick={() => setDialogVisibility(true)}>
-                    Contact
-                </Button>
-                {
-                    dialogVisibility && (
+
+                <div>
+                    <Button className="bg-[#0e2743]" size="sm" variant="outline" onClick={handleShowForm}>
+                        Contacts
+                        </Button>
                         <DialogForm
-                            title="Contact form"
-                            description="One step further to contact me."
-                            show={dialogVisibility}
-                        />
-                    )
-                }
+                        title="Your Title"
+                        description="Your Description"
+                        show={showForm}
+                        setShowForm={setShowForm}
+                    />
+                </div>
+
             </div>
         </nav>
     );
