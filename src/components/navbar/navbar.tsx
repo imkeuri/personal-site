@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button.tsx";
 
-import { useState } from "react";
-import DialogForm   from "@/components/Dialog/DialogForm.tsx";
+import  { useState } from "react";
+import DialogForm          from "@/components/Dialog/DialogForm.tsx";
 
 const Navbar = () => {
 
-    const [showForm, setShowFrom] = useState(false);
+    const [dialogVisibility, setDialogVisibility] = useState(false)
 
     return (
         <nav
@@ -40,7 +40,18 @@ const Navbar = () => {
                         Contact
                     </a>
                 </nav>
-                    <DialogForm  title={"Contact form"} description={"One step futher to contact me."} showDialog={showForm}/>
+                <Button className="bg-[#0e2743]" size="sm" variant="outline" onClick={() => setDialogVisibility(true)}>
+                    Contact
+                </Button>
+                {
+                    dialogVisibility && (
+                        <DialogForm
+                            title="Contact form"
+                            description="One step further to contact me."
+                            show={dialogVisibility}
+                        />
+                    )
+                }
             </div>
         </nav>
     );

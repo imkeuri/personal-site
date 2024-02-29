@@ -28,18 +28,17 @@ import { Textarea } from "@/components/ui/textarea.tsx";
 type DialogFormProps = {
     title: string;
     description: string;
-    style: string;
-    buttonLabel: string;
-    buttonVariant: string;
-    buttonSize: string;
+    show: boolean;
 }
 
 const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
 
     const { toast } = useToast()
 
-    const [dialogVisibility, setDialogVisibility] = useState(false)
+    const [showForm, setHideForm] = useState(true);
 
+
+    // setHideForm(props.show);
     const formSchema = z.object({
         name: z.string().min(6, {
             message: "Username must be at least 5 characters.",
@@ -53,20 +52,6 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
             .email({message: "This is no a valid email"}),
 
     })
-    function onSubmit(values: z.infer<typeof formSchema>, e) {
-
-        console.log(values)
-
-        setDialogVisibility(false)
-
-        toast({
-            title: "Message send it",
-            description: "Friday, February 10, 2023 at 5:57 PM",
-        })
-
-    }
-
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -76,15 +61,43 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
         },
     })
 
+    function onSubmit(values: z.infer<typeof formSchema>,event :Event) {
+
+        event.preventDefault();
+        try {
+            console.log(values)
+
+            // setHideForm(false);
+
+            // props.show = false;
+
+            toast({
+                title: "Message send it",
+                description: "Friday, February 10, 2023 at 5:57 PM",
+            })
+
+            setHideForm(false)
+        } catch (err){
+            toast({ variant: "destructive" })
+        }
+
+
+
+
+
+    }
+
+    if (!showForm)
+    {
+
+        return <></>
+    }
+
+
     return (
         <>
 
-            <Dialog open={dialogVisibility} onOpenChange={setDialogVisibility}>
-                <DialogTrigger>
-                    <Button className="bg-[#0e2743]" size="sm" variant="outline" onClick={() => setDialogVisibility(true)}>
-                        {props.buttonLabel}
-                    </Button>
-                </DialogTrigger>
+            <Dialog open={showForm} onOpenChange={setHideForm}>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>{props.title}</DialogTitle>
@@ -112,7 +125,7 @@ const DialogForm: React.FunctionComponent<DialogFormProps> = (props) => {
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Message</FormLabel>
+                                        <FormLabel>Email</FormLabel>
                                         <FormControl>
                                             <Input placeholder="ex: yourAreAmazing@mail.com" {...field} />
                                         </FormControl>
