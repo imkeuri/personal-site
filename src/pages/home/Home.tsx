@@ -1,11 +1,11 @@
 import "./Home.css";
-import Card from "@/components/cards/Cards";
-import Panel from "@/components/panel/panel";
+import Card from "@/components/cards/Cards.tsx";
+import PanelContribution from "@/components/panel/PanelContribution.tsx";
 import {CarouselWithContent} from "@/components/Corousel/CarouselWithContent.tsx";
-import {BlogCard} from "@/components/cards/BlogCard.tsx";
 import HeroPanel from "@/components/panel/HeroPanel.tsx";
 import PanelAboutMe from "@/components/panel/PanelAboutMe.tsx";
 import { Toaster } from "@/components/ui/toaster.tsx";
+import PanelExperience from "@/components/panel/PanelExperience.tsx";
 
 function Home() {
     return (
@@ -18,9 +18,8 @@ function Home() {
 
                 <Card/>
 
-                <Panel/>
 
-                <BlogCard/>
+                <PanelExperience/>
 
                 <CarouselWithContent/>
 

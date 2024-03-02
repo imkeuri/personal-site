@@ -53,6 +53,20 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        'big-stone': {
+          '50': '#f1f7fe',
+          '100': '#e3eefb',
+          '200': '#c0ddf7',
+          '300': '#89c2f0',
+          '400': '#4aa2e6',
+          '500': '#2286d5',
+          '600': '#1469b5',
+          '700': '#125592',
+          '800': '#134879',
+          '900': '#153e65',
+          '950': '#0e2743',
+        },
+
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,7 +87,9 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-    },
+    }
+
+
   },
   plugins: [tailwindcss_animate],
 };
