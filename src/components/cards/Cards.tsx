@@ -1,6 +1,4 @@
-import React from 'react';
 
-// Define a constant for the card contents
 const cardContents = [
     {
         title: "Cloud",
