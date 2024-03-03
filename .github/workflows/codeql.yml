@@ -44,7 +44,7 @@ jobs:
           category: "/language:${{matrix.language}}"
 
   build:
-    needs: Analyze
+    needs: analyze
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout Code
@@ -79,7 +79,7 @@ jobs:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@main
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{secrets.CI_CD_TOKEN}}
           publish_dir: ./dist
