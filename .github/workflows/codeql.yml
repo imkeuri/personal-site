@@ -12,8 +12,7 @@ jobs:
   analyze:
     name: Analyze
 
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
-    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    runs-on:  'ubuntu-latest'
     permissions:
       # required for all workflows
       security-events: write
@@ -46,7 +45,7 @@ jobs:
 
   build:
     needs: Analyze
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -54,7 +53,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: 18.x
 
       - name: Install Dependencies
         run: npm install
@@ -70,7 +69,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: 'ubuntu-latest'
     steps:
 
       - name: Download Artifact
