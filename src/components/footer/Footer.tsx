@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
 export default function Footer () {
 
-    const scrollToContactForm = (event) => {
+    const scrollToContactForm = (event: React.MouseEvent<HTMLAnchorElement>) => {
         // Prevent the default anchor link behavior
         event.preventDefault();
 
@@ -10,7 +11,7 @@ export default function Footer () {
         const contactFormSection = document.getElementById('contact-form');
 
         // Scroll to the element
-        contactFormSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        contactFormSection!.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
     return (
         <footer className="bg-[#0e2743] bg-opacity-90 py-12 text-gray-400">
@@ -22,7 +23,7 @@ export default function Footer () {
                     </div>
                     <div className="p-4 w-full md:w-auto">
 
-                        <Link to="#" onClick={scrollToContactForm} className="inline-block px-6 py-2 rounded bg-primary-500 hover:bg-primary-400 text-white">
+                        <Link to="#" onClick={(event) =>scrollToContactForm(event)} className="inline-block px-6 py-2 rounded bg-primary-500 hover:bg-primary-400 text-white">
                             Get In Touch
                         </Link>
 
