@@ -2,31 +2,31 @@
 const cardContents = [
     {
         title: "Cloud",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae congue tortor.",
+        description: "Azure-powered innovation.",
         imgSrc: "src/assets/icons/cloud-icon.svg",
         imgAlt: "Cloud icon"
     },
     {
         title: "API",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae congue tortor.",
+        description: "Robust .NET APIs.",
         imgSrc: "src/assets/icons/api-icon.svg",
         imgAlt: "API icon"
     },
     {
         title: "Web Application",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae congue tortor.",
+        description: "Cutting-edge React, Angular, Blazor integration.",
         imgSrc: "src/assets/icons/interface.svg",
         imgAlt: "Interface icon"
     },
     {
         title: "Database",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae congue tortor.",
+        description: "Expert SQL, Oracle, CosmoDb management.",
         imgSrc: "src/assets/icons/database.svg",
         imgAlt: "Database icon"
     },
     {
         title: "CMS",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae congue tortor.",
+        description: "Dynamic Umbraco development.",
         imgSrc: "src/assets/icons/cms.svg",
         imgAlt: "CMS icon"
     },

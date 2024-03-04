@@ -6,12 +6,12 @@ export function CarouselWithContent() {
 
     return (
         <>
-            <section className="container bg-gray-50 py-20 text-center text-gray-500 relative">
+            <section className=" bg-big-stone-200 py-20 text-center text-big-stone-900 relative">
                 <div className=" mx-auto px-4 ">
                     <div className="flex flex-wrap -mx-4 items-center mb-4">
                         <div className="mx-auto px-4 w-full lg:w-8/12">
-                            <h2 className="font-medium mb-1 text-blue-600">Here my certifications</h2>
-                            <h3 className="font-bold mb-1 text-3xl text-gray-900">I'm in continuous growing. </h3>
+                            <h2 className="font-medium mb-1 text-blue-600">Discover My Certifications: </h2>
+                            <h3 className="font-bold mb-1 text-3xl text-gray-900">Committed to Excellence and Continuous Growth </h3>
                         </div>
                     </div>
                     <div className="flex justify-center">

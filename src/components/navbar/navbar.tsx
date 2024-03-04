@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button.tsx";
 
 import  { useState } from "react";
 import DialogForm  from "@/components/Dialog/DialogForm.tsx";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
     const handleShowForm = () => {
@@ -19,30 +20,30 @@ const Navbar = () => {
                         Keuri Castillo
                     </a>
                     <nav className="hidden space-x-4 font-medium md:flex">
-                        <a
+                        <Link
                             className="border-b-2 border-transparent transition-colors hover:border-[#f1f7fe] dark:hover:border-gray-50"
-                            href="#"
+                            to="/"
                         >
                             Home
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             className="border-b-2 border-transparent transition-colors hover:border-[#f1f7fe] dark:hover:border-gray-50"
-                            href="#"
+                            to="/about"
                         >
                             About
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             className="border-b-2 border-transparent transition-colors hover:border-[#f1f7fe] dark:hover:border-gray-50"
-                            href="#"
+                            to="/portfolio"
                         >
                             Portfolio
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             className="border-b-2 border-transparent transition-colors hover:border-[#f1f7fe] dark:hover:border-gray-50"
-                            href="#"
+                            to="/contact"
                         >
                             Contact
-                        </a>
+                        </Link>
                     </nav>
 
                     <div>

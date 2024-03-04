@@ -5,9 +5,9 @@ const PanelExperience = () =>  {
     const areas = ['Banking', 'Insurance', 'Public Service', 'SEO', 'Consulting'];
 
     return(
-        <section className=" p-4 pb-10 grid grid-cols-1 md:grid-cols-3  gap-4">
+        <section className="p-10 grid grid-cols-1 md:grid-cols-3 gap-4 bg-gradient-to-b from-big-stone-50 to-big-stone-400">
             <div className="mx-auto px-4 w-full lg:w-8/12 col-span-3">
-                <h2 className="font-bold mb-4 text-4xl text-gray-900">
+                <h2 className="font-bold mb-4 text-4xl text-big-stone-800">
                     Look at my expertise
                 </h2>
             </div>
