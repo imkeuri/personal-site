@@ -1,123 +1,82 @@
-import {Form, FormControl, FormField, FormItem, FormLabel} from "@/components/ui/form.tsx";
-import {Input} from "@/components/ui/input.tsx";
-import {Textarea} from "@/components/ui/textarea.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {useForm} from "react-hook-form";
-import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {useToast} from "@/components/ui/use-toast.ts";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@/components/ui/use-toast";
+import image from "../../../public/assets/developer-image-form.webp"
+interface FormField {
+    name: string;
+    email: string;
+    description: string;
+}
 
-const FormContact = () =>{
+const formSchema = z.object({
+    name: z.string().min(5, "Tell us your name, so we know how to address you."),
+    email: z.string().email("We'll need a valid email to get back to you."),
+    description: z.string().min(15, "Please share a bit about your project or inquiry."),
+});
 
+const FormContact = () => {
     const { toast } = useToast();
-
-    const formSchema = z.object({
-        name: z.string().min(6, {
-            message: "Username must be at least 5 characters.",
-        }),
-
-        description: z.string().min(15, {
-            message: "description must be at least 15 characters.",
-        }),
-        email: z.string()
-            .min(6)
-            .email({ message: "This is no a valid email" }),
-    });
-
-    const form = useForm<z.infer<typeof formSchema>>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
         resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: "",
-            description: "",
-            email: "",
-        },
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const onSubmit = (values: FormField) => {
         try {
             console.log(values);
             toast({
-                title: "Message sent",
-                description: "Friday, February 10, 2023 at 5:57 PM",
+                title: "Thank you for reaching out!",
+                description: "We're excited to connect with you. You'll hear from us soon.",
+                variant: "default",
             });
+
         } catch (err) {
-            toast({ variant: "destructive" });
+            toast({
+                title: "Oops!",
+                description: "Something went wrong. Please try again.",
+                variant: "destructive",
+            });
         }
     };
-    return(
-        <>
-            <div id="contact-form" className="container py-10 text-big-stone-950 relative">
-                <div className="absolute border-4 border-white m-2 w-[92%] h-[85%] pointer-events-none"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-r from-[#88c2f1] to-[#115593]">
-                    <div className="md:order-last overflow-hidden ">
-                        <div className="h-40 md:h-full">
-                            <img className="w-full h-full object-cover" src="src/assets/developer-image-form.webp" alt="Developer Form"/>
+    return (
+        <div id="contact-form" className="min-h-screen flex items-center justify-center bg-big-stone-50">
+            <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl overflow-hidden md:flex">
+                <div className="hidden md:block md:w-1/2" style={{ backgroundColor: "#4aa2e6" }}>
+                    <img className="w-full h-full object-cover" src={image} alt="Let's Collaborate" />
+                </div>
+                <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 text-[#0e2743]">
+                    <h2 className="text-3xl font-bold text-center mb-6" style={{ color: "#2286d5" }}>Ready to Make Something Amazing?</h2>
+                    <p className="text-md text-center text-[#153e65] mb-8">We're excited to help bring your vision to life. Tell us a little about your project, and we'll get in touch.</p>
+                    <form onSubmit={handleSubmit(() => onSubmit)} className="space-y-6">
+                        <div>
+                            <label htmlFor="name" className="block text-sm font-medium">Your Name</label>
+                            <input {...register("name")} id="name" className="mt-1 p-2 w-full rounded-md shadow-sm border" />
+                            {errors.description && typeof errors.description.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.description.message}</p>}
                         </div>
-                    </div>
 
-                    <div className="justify-center m-auto md:order-first">
-                        <div className="text-center py-5">
-                            <h2 className="text-2xl font-bold">
-                                Making a change <br/>
-                                required a conversation...
-                            </h2>
-                            <h3 className="text-opacity-30 pt-1">
-                                Fill this form and immediately I'll contact you
-                            </h3>
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium">Your Email</label>
+                            <input {...register("email")} id="email" type="email" className="mt-1 p-2 w-full rounded-md shadow-sm border" />
+                            {errors.description && typeof errors.description.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.description.message}</p>}
                         </div>
-                        <div className="text-start py-5">
-                            <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    <FormField
-                                        control={form.control}
-                                        name="name"
-                                        render={({field}) => (
-                                            <FormItem>
-                                                <FormLabel>Full Name</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="Name" {...field} />
-                                                </FormControl>
-                                            </FormItem>
-                                        )}
-                                    />
 
-                                    <FormField
-                                        control={form.control}
-                                        name="email"
-                                        render={({field}) => (
-                                            <FormItem>
-                                                <FormLabel>Email</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="ex: yourAreAmazing@mail.com" {...field} />
-                                                </FormControl>
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="description"
-                                        render={({field}) => (
-                                            <FormItem>
-                                                <FormLabel>Message</FormLabel>
-                                                <FormControl>
-                                                    <Textarea placeholder="Description" {...field} />
-                                                </FormControl>
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <Button className=" hover:bg-white hover:text-big-stone-950 w-full" type="submit">Submit</Button>
-                                </form>
-                            </Form>
+                        <div>
+                            <label htmlFor="description" className="block text-sm font-medium">Your Message</label>
+                            <textarea {...register("description")} id="description" className="mt-1 p-2 w-full rounded-md shadow-sm border" rows={4}></textarea>
+                            {errors.description && typeof errors.description.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.description.message}</p>}
                         </div>
-                    </div>
+
+                        <button type="submit" className="w-full flex justify-center py-2 px-4 rounded-md text-sm font-medium text-white" style={{ backgroundColor: "#1469b5", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }} onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#2286d5")} onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#1469b5")}>Let's Get Started</button>
+                    </form>
                 </div>
             </div>
-        </>
-
-
-    )
-}
-
+        </div>
+    );
+};
 
 export default FormContact;

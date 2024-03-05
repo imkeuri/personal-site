@@ -1,4 +1,4 @@
-import personImage from '../../assets/Person.webp'; // Updated import to follow naming conventions
+import personImage from '../../../public/assets/Person.webp'; // Updated import to follow naming conventions
 
 const PanelContribution = () => (
     <section className="bg-gray-100 text-gray-900">
