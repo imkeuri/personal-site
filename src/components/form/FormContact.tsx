@@ -56,13 +56,13 @@ const FormContact = () => {
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium">Your Name</label>
                             <input {...register("name")} id="name" className="mt-1 p-2 w-full rounded-md shadow-sm border" />
-                            {errors.description && typeof errors.description.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.description.message}</p>}
+                            {errors.name && typeof errors.name.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>}
                         </div>
 
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium">Your Email</label>
                             <input {...register("email")} id="email" type="email" className="mt-1 p-2 w-full rounded-md shadow-sm border" />
-                            {errors.description && typeof errors.description.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.description.message}</p>}
+                            {errors.email && typeof errors.email.message === 'string' && <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>}
                         </div>
 
                         <div>
