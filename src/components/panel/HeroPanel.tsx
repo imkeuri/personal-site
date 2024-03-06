@@ -10,14 +10,14 @@ const HeroPanel = () => {
     };
 
     return (
-        <section className="relative text-white">
+        <section className="relative text-white justify-center items-center">
             <div className="bg-gradient-to-tl from-[#59b0f4] to-[#202020] h-screen w-full relative overflow-hidden">
                 <img
                     src="https://images.unsplash.com/photo-1602992708529-c9fdb12905c9?&q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     className="w-full h-full absolute object-cover mix-blend-hard-light"
                     alt="dynamic background"
                 />
-                <div className="container mx-auto flex justify-center items-center h-full absolute">
+                <div className="container mx-auto flex justify-center items-center h-full relative">
                     <div className="text-center">
                         <h1 className="font-extrabold text-6xl md:text-8xl">Software Developer</h1>
                         <p className="font-light text-2xl md:text-4xl mt-4 mb-6">

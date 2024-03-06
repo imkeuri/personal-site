@@ -24,7 +24,7 @@ export function CarouselWithContent() {
             description: "This certification validates the skills and knowledge to implement, manage, and monitor an organization’s Microsoft Azure environment.",
             date: "Certified on July 20, 2023",
             imgSrc: MicrosoftAssociated,
-            verificationLink: "https://www.microsoft.com/en-us/learning/certification-overview.aspx"
+            verificationLink: "https://learn.microsoft.com/api/credentials/share/en-us/KeuriCastillo-0914/746C4307CE16E208?sharingId=5A2948554A372070"
         },
         {
             id: 2,
@@ -33,7 +33,7 @@ export function CarouselWithContent() {
             description: "Demonstrates understanding of cloud concepts, Azure services, Azure workloads, security and privacy in Azure, as well as Azure pricing and support.",
             date: "Certified on September 1, 2022",
             imgSrc: MicrosoftFundamentals,
-            verificationLink: "https://www.microsoft.com/en-us/learning/certification-overview.aspx"
+            verificationLink: "https://learn.microsoft.com/api/credentials/share/en-us/KeuriCastillo-0914/DDA8F45EC0E094DB?sharingId=5A2948554A372070"
         },
     ];
 
